@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ShutdownX
 {
-    public partial class Form1 : Form
+    public partial class shutdownxMain : Form
     {
         private const int WM_NCHITTEST = 132;
         private const int HTBOTTOMRIGHT = 17;
@@ -21,97 +21,100 @@ namespace ShutdownX
         public int Time;
         
         public string CompactTime = "";
-        public Form1()
+        public shutdownxMain()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void startTimerShutdown_Click(object sender, EventArgs e)
         {
-            if(comboBox1.Text == "" && comboBox2.Text == "")
+            if(textboxHours.Text == "" && textboxMinutes.Text == "")
             {
-                MessageBox.Show("Veuillez selectioner une date", "ShutdownX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select your custom shutdown time.", "ShutdownX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                  
-                if(button1.Text == "Cancel Shutdown")
+                if(startTimerShutdown.Text == "Cancel Shutdown")
                 {
                     Process.Start("shutdown", "/a");
                     MessageBox.Show("Shutdown cancelled", "ShutdownX", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    button1.Text = "Start";
-                    timer2.Enabled = false;
-                    label1.Visible = false;
-                    label2.Visible = false;
+                    startTimerShutdown.Text = "Start";
+                    timerCheckShutdownRules.Enabled = false;
+                    labelShutdownTxt.Visible = false;
+                    labelShutdownClock.Visible = false;
                 }
                 else
                 {
-                    if (checkBox2.Checked)
+                    if (checkBox12hClock.Checked)
                     {
-                        if (checkBox3.Checked) { label2.Text = comboBox1.Text + ":" + comboBox2.Text + " AM"; }
-                        else { label2.Text = comboBox1.Text + ":" + comboBox2.Text + " PM"; }
-                        timer2.Enabled = true;
-                        label1.Visible = true;
-                        label2.Visible = true;
-                        button1.Text = "Cancel Shutdown";
+                        checkBox24hClock.Checked = false;
+                        if (checkboxShutdownAM.Checked) { labelShutdownClock.Text = textboxHours.Text + ":" + textboxMinutes.Text + " AM"; }
+                        else { labelShutdownClock.Text = textboxHours.Text + ":" + textboxMinutes.Text + " PM"; }
+                        timerCheckShutdownRules.Enabled = true;
+                        labelShutdownTxt.Visible = true;
+                        labelShutdownClock.Visible = true;
+                        startTimerShutdown.Text = "Cancel Shutdown";
                     }
                     else
                     {
-                        label2.Text = comboBox1.Text + ":" + comboBox2.Text;
-                        timer2.Enabled = true;
-                        label1.Visible = true;
-                        label2.Visible = true;
-                        button1.Text = "Cancel Shutdown";
+                        checkBox12hClock.Checked = false;
+                        checkBox24hClock.Checked = true;
+                        labelShutdownClock.Text = textboxHours.Text + ":" + textboxMinutes.Text;
+                        timerCheckShutdownRules.Enabled = true;
+                        labelShutdownTxt.Visible = true;
+                        labelShutdownClock.Visible = true;
+                        startTimerShutdown.Text = "Cancel Shutdown";
                     }
                 }
                  
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void shutdownxMain_Load(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
-            label1.Visible = false;
-            label2.Visible = false;
-            checkBox3.Visible = false;
-            checkBox4.Visible = false;
+            timerLocalTime.Enabled = true;
+            labelShutdownTxt.Visible = false;
+            labelShutdownClock.Visible = false;
+            checkboxShutdownAM.Visible = false;
+            checkboxShutdownPM.Visible = false;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timerLocalTime_Tick(object sender, EventArgs e)
         {
-            if (checkBox2.Checked) { CompactTime = DateTime.Now.ToString("h:mm tt"); }
+            if (checkBox12hClock.Checked) { CompactTime = DateTime.Now.ToString("h:mm tt"); }
             else { CompactTime = DateTime.Now.ToString("HH:mm tt"); }
-            label3.Text = CompactTime;
+            comptactTimeVisual.Text = CompactTime;
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        private void timerCheckShutdownRules_Tick(object sender, EventArgs e)
         {
-            if(label2.Text.Trim() == label3.Text.Trim())
+            if(labelShutdownClock.Text.Trim() == comptactTimeVisual.Text.Trim())
             {
-                timer2.Enabled = false;
+                timerCheckShutdownRules.Enabled = false;
                 Process.Start("shutdown", "/s /t 60");
                 MessageBox.Show("Your pc will shutdown in one minute", "ShutdownX", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void appExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // Close the app when the 'X' is clicked 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void appMinimise_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void appTopPanel_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
             dragCursorPoint = Cursor.Position;
             dragFormPoint = this.Location;
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void appTopPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
@@ -120,65 +123,62 @@ namespace ShutdownX
             }
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        private void appTopPanel_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void checkBox12hClock_CheckedChanged(object sender, EventArgs e) // checkBox12hClock
         {
-            checkBox1.Checked = false;
-            comboBox1.Items.Clear();
-            checkBox3.Visible = true;
-            checkBox4.Visible = true;
-            comboBox1.Items.Add("1");
-            comboBox1.Items.Add("2");
-            comboBox1.Items.Add("3");
-            comboBox1.Items.Add("4");
-            comboBox1.Items.Add("5");
-            comboBox1.Items.Add("6");
-            comboBox1.Items.Add("7");
-            comboBox1.Items.Add("8");
-            comboBox1.Items.Add("9");
-            comboBox1.Items.Add("10");
-            comboBox1.Items.Add("11");
-            comboBox1.Items.Add("12");
-
+             
+            checkBox24hClock.Checked = false;
+            textboxHours.Items.Clear();
+            checkboxShutdownAM.Visible = true;
+            checkboxShutdownPM.Visible = true;
+            textboxHours.Items.Add("1"); 
+            textboxHours.Items.Add("2");
+            textboxHours.Items.Add("3");
+            textboxHours.Items.Add("4");
+            textboxHours.Items.Add("5");
+            textboxHours.Items.Add("6");
+            textboxHours.Items.Add("7");
+            textboxHours.Items.Add("8");
+            textboxHours.Items.Add("9");
+            textboxHours.Items.Add("10");
+            textboxHours.Items.Add("11");
+            textboxHours.Items.Add("12");
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBox2.Checked = false;
-            checkBox3.Visible = false;
-            checkBox4.Visible = false;
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add("00");
-            comboBox1.Items.Add("01");
-            comboBox1.Items.Add("02");
-            comboBox1.Items.Add("03");
-            comboBox1.Items.Add("04");
-            comboBox1.Items.Add("05");
-            comboBox1.Items.Add("06");
-            comboBox1.Items.Add("07");
-            comboBox1.Items.Add("08");
-            comboBox1.Items.Add("09");
-            comboBox1.Items.Add("10");
-            comboBox1.Items.Add("11");
-            comboBox1.Items.Add("12");
-            comboBox1.Items.Add("13");
-            comboBox1.Items.Add("14");
-            comboBox1.Items.Add("15");
-            comboBox1.Items.Add("16");
-            comboBox1.Items.Add("17");
-            comboBox1.Items.Add("18");
-            comboBox1.Items.Add("19");
-            comboBox1.Items.Add("20");
-            comboBox1.Items.Add("21");
-            comboBox1.Items.Add("22");
-            comboBox1.Items.Add("23");
-            
-            
-
+        private void checkBox24hClock_CheckedChanged(object sender, EventArgs e) // checkBox24hClock
+        {  
+            checkBox12hClock.Checked = false;
+            checkboxShutdownAM.Visible = false;
+            checkboxShutdownPM.Visible = false;
+            textboxHours.Items.Clear();
+            textboxHours.Items.Add("00");
+            textboxHours.Items.Add("01");
+            textboxHours.Items.Add("02");
+            textboxHours.Items.Add("03");
+            textboxHours.Items.Add("04");
+            textboxHours.Items.Add("05");
+            textboxHours.Items.Add("06");
+            textboxHours.Items.Add("07");
+            textboxHours.Items.Add("08");
+            textboxHours.Items.Add("09");
+            textboxHours.Items.Add("10");
+            textboxHours.Items.Add("11");
+            textboxHours.Items.Add("12");
+            textboxHours.Items.Add("13");
+            textboxHours.Items.Add("14");
+            textboxHours.Items.Add("15");
+            textboxHours.Items.Add("16");
+            textboxHours.Items.Add("17");
+            textboxHours.Items.Add("18");
+            textboxHours.Items.Add("19");
+            textboxHours.Items.Add("20");
+            textboxHours.Items.Add("21");
+            textboxHours.Items.Add("22");
+            textboxHours.Items.Add("23");
         }
     }
 }

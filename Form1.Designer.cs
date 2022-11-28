@@ -1,6 +1,6 @@
 ﻿namespace ShutdownX
 {
-    partial class Form1
+    partial class shutdownxMain
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -29,35 +29,35 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(shutdownxMain));
+            this.textboxHours = new System.Windows.Forms.ComboBox();
+            this.textboxMinutes = new System.Windows.Forms.ComboBox();
+            this.startTimerShutdown = new System.Windows.Forms.Button();
+            this.timerLocalTime = new System.Windows.Forms.Timer(this.components);
+            this.timerCheckShutdownRules = new System.Windows.Forms.Timer(this.components);
+            this.labelShutdownTxt = new System.Windows.Forms.Label();
+            this.labelShutdownClock = new System.Windows.Forms.Label();
+            this.comptactTimeVisual = new System.Windows.Forms.Label();
+            this.appTopPanel = new System.Windows.Forms.Panel();
+            this.appName = new System.Windows.Forms.Label();
+            this.appMinimise = new System.Windows.Forms.Button();
+            this.appExit = new System.Windows.Forms.Button();
+            this.labelHours = new System.Windows.Forms.Label();
+            this.labelMinutes = new System.Windows.Forms.Label();
+            this.checkBox24hClock = new System.Windows.Forms.CheckBox();
+            this.checkBox12hClock = new System.Windows.Forms.CheckBox();
+            this.checkboxShutdownAM = new System.Windows.Forms.CheckBox();
+            this.checkboxShutdownPM = new System.Windows.Forms.CheckBox();
+            this.DO_NOT_CHANGE = new System.Windows.Forms.Label();
+            this.appTopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // textboxHours
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.textboxHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textboxHours.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textboxHours.FormattingEnabled = true;
+            this.textboxHours.Items.AddRange(new object[] {
             "00",
             "01",
             "02",
@@ -82,17 +82,17 @@
             "21",
             "22",
             "23"});
-            this.comboBox1.Location = new System.Drawing.Point(32, 130);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 29);
-            this.comboBox1.TabIndex = 0;
+            this.textboxHours.Location = new System.Drawing.Point(32, 130);
+            this.textboxHours.Name = "textboxHours";
+            this.textboxHours.Size = new System.Drawing.Size(141, 29);
+            this.textboxHours.TabIndex = 0;
             // 
-            // comboBox2
+            // textboxMinutes
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.textboxMinutes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textboxMinutes.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
+            this.textboxMinutes.FormattingEnabled = true;
+            this.textboxMinutes.Items.AddRange(new object[] {
             "00",
             "01",
             "02",
@@ -153,230 +153,233 @@
             "57",
             "58",
             "59\t"});
-            this.comboBox2.Location = new System.Drawing.Point(209, 130);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(141, 29);
-            this.comboBox2.TabIndex = 1;
+            this.textboxMinutes.Location = new System.Drawing.Point(209, 130);
+            this.textboxMinutes.Name = "textboxMinutes";
+            this.textboxMinutes.Size = new System.Drawing.Size(141, 29);
+            this.textboxMinutes.TabIndex = 1;
             // 
-            // button1
+            // startTimerShutdown
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(253, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 30);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startTimerShutdown.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.startTimerShutdown.FlatAppearance.BorderSize = 0;
+            this.startTimerShutdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startTimerShutdown.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startTimerShutdown.ForeColor = System.Drawing.Color.White;
+            this.startTimerShutdown.Location = new System.Drawing.Point(253, 370);
+            this.startTimerShutdown.Name = "startTimerShutdown";
+            this.startTimerShutdown.Size = new System.Drawing.Size(123, 30);
+            this.startTimerShutdown.TabIndex = 3;
+            this.startTimerShutdown.Text = "Start";
+            this.startTimerShutdown.UseVisualStyleBackColor = false;
+            this.startTimerShutdown.Click += new System.EventHandler(this.startTimerShutdown_Click);
             // 
-            // timer1
+            // timerLocalTime
             // 
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerLocalTime.Interval = 1;
+            this.timerLocalTime.Tick += new System.EventHandler(this.timerLocalTime_Tick);
             // 
-            // timer2
+            // timerCheckShutdownRules
             // 
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.timerCheckShutdownRules.Interval = 1;
+            this.timerCheckShutdownRules.Tick += new System.EventHandler(this.timerCheckShutdownRules_Tick);
             // 
-            // label1
+            // labelShutdownTxt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(5, 384);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Your pc will shutdown at";
+            this.labelShutdownTxt.AutoSize = true;
+            this.labelShutdownTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelShutdownTxt.ForeColor = System.Drawing.Color.White;
+            this.labelShutdownTxt.Location = new System.Drawing.Point(5, 384);
+            this.labelShutdownTxt.Name = "labelShutdownTxt";
+            this.labelShutdownTxt.Size = new System.Drawing.Size(147, 16);
+            this.labelShutdownTxt.TabIndex = 4;
+            this.labelShutdownTxt.Text = "Your pc will shutdown at";
             // 
-            // label2
+            // labelShutdownClock
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(151, 384);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "11:05";
+            this.labelShutdownClock.AutoSize = true;
+            this.labelShutdownClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelShutdownClock.ForeColor = System.Drawing.Color.White;
+            this.labelShutdownClock.Location = new System.Drawing.Point(151, 384);
+            this.labelShutdownClock.Name = "labelShutdownClock";
+            this.labelShutdownClock.Size = new System.Drawing.Size(38, 16);
+            this.labelShutdownClock.TabIndex = 5;
+            this.labelShutdownClock.Text = "11:05";
             // 
-            // label3
+            // comptactTimeVisual
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.label3.Location = new System.Drawing.Point(303, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "local_time";
+            this.comptactTimeVisual.AutoSize = true;
+            this.comptactTimeVisual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.comptactTimeVisual.Location = new System.Drawing.Point(303, 57);
+            this.comptactTimeVisual.Name = "comptactTimeVisual";
+            this.comptactTimeVisual.Size = new System.Drawing.Size(54, 13);
+            this.comptactTimeVisual.TabIndex = 6;
+            this.comptactTimeVisual.Text = "local_time";
             // 
-            // panel1
+            // appTopPanel
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.appTopPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(-2, -1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 31);
-            this.panel1.TabIndex = 7;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            this.appTopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.appTopPanel.Controls.Add(this.appName);
+            this.appTopPanel.Controls.Add(this.appMinimise);
+            this.appTopPanel.Controls.Add(this.appExit);
+            this.appTopPanel.Location = new System.Drawing.Point(-2, -1);
+            this.appTopPanel.Name = "appTopPanel";
+            this.appTopPanel.Size = new System.Drawing.Size(388, 31);
+            this.appTopPanel.TabIndex = 7;
+            this.appTopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseDown);
+            this.appTopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseMove);
+            this.appTopPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseUp);
             // 
-            // label4
+            // appName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(7, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "ShutdownX";
+            this.appName.AutoSize = true;
+            this.appName.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appName.ForeColor = System.Drawing.Color.White;
+            this.appName.Location = new System.Drawing.Point(7, 7);
+            this.appName.Name = "appName";
+            this.appName.Size = new System.Drawing.Size(70, 17);
+            this.appName.TabIndex = 8;
+            this.appName.Text = "ShutdownX";
             // 
-            // button3
+            // appMinimise
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(308, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 26);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.appMinimise.FlatAppearance.BorderSize = 0;
+            this.appMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appMinimise.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appMinimise.ForeColor = System.Drawing.Color.White;
+            this.appMinimise.Location = new System.Drawing.Point(308, 2);
+            this.appMinimise.Name = "appMinimise";
+            this.appMinimise.Size = new System.Drawing.Size(32, 26);
+            this.appMinimise.TabIndex = 9;
+            this.appMinimise.Text = "-";
+            this.appMinimise.UseVisualStyleBackColor = true;
+            this.appMinimise.Click += new System.EventHandler(this.appMinimise_Click);
             // 
-            // button2
+            // appExit
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(350, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 26);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.appExit.FlatAppearance.BorderSize = 0;
+            this.appExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appExit.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appExit.ForeColor = System.Drawing.Color.Red;
+            this.appExit.Location = new System.Drawing.Point(350, 2);
+            this.appExit.Name = "appExit";
+            this.appExit.Size = new System.Drawing.Size(32, 26);
+            this.appExit.TabIndex = 8;
+            this.appExit.Text = "X";
+            this.appExit.UseVisualStyleBackColor = true;
+            this.appExit.Click += new System.EventHandler(this.appExit_Click);
             // 
-            // label5
+            // labelHours
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(29, 101);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Hours";
+            this.labelHours.AutoSize = true;
+            this.labelHours.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHours.ForeColor = System.Drawing.Color.White;
+            this.labelHours.Location = new System.Drawing.Point(29, 101);
+            this.labelHours.Name = "labelHours";
+            this.labelHours.Size = new System.Drawing.Size(40, 17);
+            this.labelHours.TabIndex = 8;
+            this.labelHours.Text = "Hours";
             // 
-            // label6
+            // labelMinutes
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(206, 101);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Minutes";
+            this.labelMinutes.AutoSize = true;
+            this.labelMinutes.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMinutes.ForeColor = System.Drawing.Color.White;
+            this.labelMinutes.Location = new System.Drawing.Point(206, 101);
+            this.labelMinutes.Name = "labelMinutes";
+            this.labelMinutes.Size = new System.Drawing.Size(52, 17);
+            this.labelMinutes.TabIndex = 9;
+            this.labelMinutes.Text = "Minutes";
             // 
-            // checkBox1
+            // checkBox24hClock
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(12, 309);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(91, 17);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "24-hour clock";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox24hClock.AutoSize = true;
+            this.checkBox24hClock.ForeColor = System.Drawing.Color.White;
+            this.checkBox24hClock.Location = new System.Drawing.Point(12, 309);
+            this.checkBox24hClock.Name = "checkBox24hClock";
+            this.checkBox24hClock.Size = new System.Drawing.Size(91, 17);
+            this.checkBox24hClock.TabIndex = 10;
+            this.checkBox24hClock.Text = "24-hour clock";
+            this.checkBox24hClock.UseVisualStyleBackColor = true;
+            this.checkBox24hClock.CheckedChanged += new System.EventHandler(this.checkBox24hClock_CheckedChanged);
             // 
-            // checkBox2
+            // checkBox12hClock
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(12, 334);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(91, 17);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "12-hour clock";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox12hClock.AutoSize = true;
+            this.checkBox12hClock.ForeColor = System.Drawing.Color.White;
+            this.checkBox12hClock.Location = new System.Drawing.Point(12, 334);
+            this.checkBox12hClock.Name = "checkBox12hClock";
+            this.checkBox12hClock.Size = new System.Drawing.Size(91, 17);
+            this.checkBox12hClock.TabIndex = 11;
+            this.checkBox12hClock.Text = "12-hour clock";
+            this.checkBox12hClock.UseVisualStyleBackColor = true;
+            this.checkBox12hClock.CheckedChanged += new System.EventHandler(this.checkBox12hClock_CheckedChanged);
             // 
-            // checkBox3
+            // checkboxShutdownAM
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.ForeColor = System.Drawing.Color.White;
-            this.checkBox3.Location = new System.Drawing.Point(12, 357);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(42, 17);
-            this.checkBox3.TabIndex = 12;
-            this.checkBox3.Text = "AM";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkboxShutdownAM.AutoSize = true;
+            this.checkboxShutdownAM.ForeColor = System.Drawing.Color.White;
+            this.checkboxShutdownAM.Location = new System.Drawing.Point(12, 357);
+            this.checkboxShutdownAM.Name = "checkboxShutdownAM";
+            this.checkboxShutdownAM.Size = new System.Drawing.Size(42, 17);
+            this.checkboxShutdownAM.TabIndex = 12;
+            this.checkboxShutdownAM.Text = "AM";
+            this.checkboxShutdownAM.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkboxShutdownPM
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.ForeColor = System.Drawing.Color.White;
-            this.checkBox4.Location = new System.Drawing.Point(57, 357);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(42, 17);
-            this.checkBox4.TabIndex = 13;
-            this.checkBox4.Text = "PM";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkboxShutdownPM.AutoSize = true;
+            this.checkboxShutdownPM.ForeColor = System.Drawing.Color.White;
+            this.checkboxShutdownPM.Location = new System.Drawing.Point(57, 357);
+            this.checkboxShutdownPM.Name = "checkboxShutdownPM";
+            this.checkboxShutdownPM.Size = new System.Drawing.Size(42, 17);
+            this.checkboxShutdownPM.TabIndex = 13;
+            this.checkboxShutdownPM.Text = "PM";
+            this.checkboxShutdownPM.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // DO_NOT_CHANGE
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(307, 342);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 17);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "@Notwinn_";
+            this.DO_NOT_CHANGE.AutoSize = true;
+            this.DO_NOT_CHANGE.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DO_NOT_CHANGE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DO_NOT_CHANGE.Location = new System.Drawing.Point(307, 342);
+            this.DO_NOT_CHANGE.Name = "DO_NOT_CHANGE";
+            this.DO_NOT_CHANGE.Size = new System.Drawing.Size(66, 17);
+            this.DO_NOT_CHANGE.TabIndex = 10;
+            this.DO_NOT_CHANGE.Text = "@ulrborgtv";
             // 
-            // Form1
+            // shutdownxMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(382, 406);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.DO_NOT_CHANGE);
+            this.Controls.Add(this.checkboxShutdownPM);
+            this.Controls.Add(this.checkboxShutdownAM);
+            this.Controls.Add(this.checkBox12hClock);
+            this.Controls.Add(this.checkBox24hClock);
+            this.Controls.Add(this.labelMinutes);
+            this.Controls.Add(this.labelHours);
+            this.Controls.Add(this.appTopPanel);
+            this.Controls.Add(this.comptactTimeVisual);
+            this.Controls.Add(this.labelShutdownClock);
+            this.Controls.Add(this.labelShutdownTxt);
+            this.Controls.Add(this.startTimerShutdown);
+            this.Controls.Add(this.textboxMinutes);
+            this.Controls.Add(this.textboxHours);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "shutdownxMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShutdownX";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.shutdownxMain_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.appTopPanel_MouseUp);
+            this.appTopPanel.ResumeLayout(false);
+            this.appTopPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,25 +387,25 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox textboxHours;
+        private System.Windows.Forms.ComboBox textboxMinutes;
+        private System.Windows.Forms.Button startTimerShutdown;
+        private System.Windows.Forms.Timer timerLocalTime;
+        private System.Windows.Forms.Timer timerCheckShutdownRules;
+        private System.Windows.Forms.Label labelShutdownTxt;
+        private System.Windows.Forms.Label labelShutdownClock;
+        private System.Windows.Forms.Label comptactTimeVisual;
+        private System.Windows.Forms.Panel appTopPanel;
+        private System.Windows.Forms.Button appExit;
+        private System.Windows.Forms.Button appMinimise;
+        private System.Windows.Forms.Label appName;
+        private System.Windows.Forms.Label labelHours;
+        private System.Windows.Forms.Label labelMinutes;
+        private System.Windows.Forms.CheckBox checkBox24hClock;
+        private System.Windows.Forms.CheckBox checkBox12hClock;
+        private System.Windows.Forms.CheckBox checkboxShutdownAM;
+        private System.Windows.Forms.CheckBox checkboxShutdownPM;
+        private System.Windows.Forms.Label DO_NOT_CHANGE;
     }
 }
 

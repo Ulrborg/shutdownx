@@ -9,3 +9,14 @@ C:\Users\Brad\source\repos\ShutdownX\obj\Debug\ShutdownX.csproj.CoreCompileInput
 C:\Users\Brad\source\repos\ShutdownX\obj\Debug\ShutdownX.exe
 C:\Users\Brad\source\repos\ShutdownX\obj\Debug\ShutdownX.pdb
 C:\Users\Brad\source\repos\ShutdownX\obj\Debug\ShutdownX.csproj.AssemblyReference.cache
+D:\Github\shutdownx\bin\Debug\ShutdownX.exe.config
+D:\Github\shutdownx\bin\Debug\ShutdownX.exe
+D:\Github\shutdownx\bin\Debug\ShutdownX.pdb
+D:\Github\shutdownx\obj\Debug\ShutdownX.csproj.AssemblyReference.cache
+D:\Github\shutdownx\obj\Debug\ShutdownX.csproj.SuggestedBindingRedirects.cache
+D:\Github\shutdownx\obj\Debug\ShutdownX.shutdownxMain.resources
+D:\Github\shutdownx\obj\Debug\ShutdownX.Properties.Resources.resources
+D:\Github\shutdownx\obj\Debug\ShutdownX.csproj.GenerateResource.cache
+D:\Github\shutdownx\obj\Debug\ShutdownX.csproj.CoreCompileInputs.cache
+D:\Github\shutdownx\obj\Debug\ShutdownX.exe
+D:\Github\shutdownx\obj\Debug\ShutdownX.pdb
